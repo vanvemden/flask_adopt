@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block page_title %}Adopt{% endblock %}
+
+{% block title %}Adopt{% endblock %}
+
+{% block content %}
+<a href="/add">Add pet</a>
+<hr>
+<div class="container">
+    <div class="row">
+        {% for pet in pets %}
+            <div class="card col-sm-4 m-2">
+            {% if pet.photo_url %}
+            <img src="{{ pet.photo_url }}" class="card-img-top">
+            {% endif %}
+            <div class="card-body">
+                <p class="card-text">
+                    <a href="/{{ pet.id }}">{{ pet.name }}</a>
+                    {% if pet.available %}
+                    <strong> is available!</strong>
+                    {% endif %}
+                </p>
+            </div>
+            </div>
+
+        {% endfor %}
+        {% endblock %}
+    </div>
+</div>
